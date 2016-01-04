@@ -5,6 +5,10 @@
  */
 package step1_exploding_kittens.Model;
 
+import java.util.List;
+import java.util.EmptyStackException;
+import java.util.LinkedList;
+
 /**
  *
  * @author Nicolas
@@ -12,36 +16,26 @@ package step1_exploding_kittens.Model;
 public class Player {
     public String name;
     public String state;
-    public Card[] cards;
+    public List<Card> cards;
+    
 
-    public Player(String name, String state, Card[] cards) {
+    public Player() {
+        throw new EmptyStackException();
+    }
+
+    public Player(String name) {
+        this.name = name;
+        this.state = "aLive";
+        this.cards = new LinkedList();
+    }
+    
+    
+    public Player(String name, String state, List cards) {
         this.name = name;
         this.state = state;
         this.cards = cards;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public Card[] getCards() {
-        return cards;
-    }
-
-    public void setCards(Card[] cards) {
-        this.cards = cards;
-    }
+    
     
 }

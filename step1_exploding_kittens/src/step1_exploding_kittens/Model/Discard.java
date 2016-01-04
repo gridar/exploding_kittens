@@ -12,6 +12,10 @@ package step1_exploding_kittens.Model;
 public class Discard {
     public Card[] cards;
 
+    public Discard() {
+    }
+
+    
     public Discard(Card[] cards) {
         this.cards = cards;
     }

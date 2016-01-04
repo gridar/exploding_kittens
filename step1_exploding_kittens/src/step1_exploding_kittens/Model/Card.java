@@ -13,6 +13,15 @@ public class Card {
     public String name;
     public String effect;
 
+    public Card() {
+        
+    }
+
+    public Card(String name) {
+        this.name = name;
+    }
+    
+    
     public Card(String name, String effect) {
         this.name = name;
         this.effect = effect;

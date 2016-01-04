@@ -5,6 +5,8 @@
  */
 package step1_exploding_kittens;
 
+import step1_exploding_kittens.Model.Engine;
+
 /**
  *
  * @author Nicolas
@@ -15,7 +17,7 @@ public class Step1_exploding_kittens {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int nbPlayer = 2;
+        new Engine();
         
     }
     

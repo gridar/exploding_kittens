@@ -15,8 +15,16 @@ import java.util.Random;
  * @author Nicolas
  */
 public class Deck {
-    public static int NB_CARDS_BY_PLAYER = 10;
+    public static int NB_CARDS_BY_PLAYER = 9;
     public List<Card> cards;
+
+
+    public float NB_ATTACK_CARDS = 4;
+    public float NB_SKIP_CARDS = 4;
+    public float NB_ATTACK_CARDS = 4;
+    public float NB_ATTACK_CARDS = 4;
+    public float NB_ATTACK_CARDS = 5;
+    public float NB_ATTACK_CARDS = 20;
     
     public Deck(int nb_players) {
         this.cards = new LinkedList();

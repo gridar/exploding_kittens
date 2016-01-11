@@ -50,6 +50,13 @@ public class Player {
         }
         return false;
     }
+
+    public boolean haveSpecificPairs(String name){
+        if (cards.stream().filter(c -> c.name.equals(name)).count() == 2) {
+            return true;
+        }
+        return false;
+    }
     
     public Card playCard(int index){
         Card card_tmp = new Card();

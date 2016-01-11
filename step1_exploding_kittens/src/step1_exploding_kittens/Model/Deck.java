@@ -5,8 +5,10 @@
  */
 package step1_exploding_kittens.Model;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -24,6 +26,7 @@ public class Deck {
         
         this.createCards("Exploding kitten", nb_exploding_kitten_cards);
         this.createCards("kitten", nb_normal_cards);
+        
     }
     
     public void print() {
@@ -31,6 +34,27 @@ public class Deck {
             
             System.out.println(cards.get(i).name);
     
+        }
+    }
+    
+    public void randomDeck(){
+        
+        List<Card> clone_deck = new LinkedList<Card>();
+        List<Card> clone_deck_tmp = this.cards;
+        int size_deck = this.cards.size();
+        
+        Random randomGenerator = new Random();
+        int randomInt;
+        while(clone_deck_tmp.size()>0){
+            randomInt = randomGenerator.nextInt(clone_deck_tmp.size());
+            clone_deck.add(clone_deck_tmp.get(randomInt));
+            clone_deck_tmp.remove(randomInt);
+        }
+        if(clone_deck.size()==size_deck){
+            this.cards = clone_deck;
+            System.out.println("Good randomDeck");
+        }else{
+            System.out.println("Bad randomDeck");
         }
     }
     

@@ -25,6 +25,9 @@ public class Engine {
         players.add(new Player( "juju"));
         
         deck.print();
+        System.out.println("\nrandomDeck ?\n");
+        deck.randomDeck();
+        deck.print();
         
     }
     

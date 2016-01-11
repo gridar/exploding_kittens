@@ -8,6 +8,7 @@ package step1_exploding_kittens.Model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Engine {
     public Deck deck;
     public Discard discard;
     public Player currentPlayer;
+    public Player currentCounterPlayer;
     
     public Engine() {
         deck = new Deck(2);
@@ -55,8 +57,67 @@ public class Engine {
     }
     
     public void playTurn(){
-        //Wait current player play a card
-            
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("player's turn : "+currentPlayer.name);
+        System.out.println("Cards");
+        for(int i=0; i < currentPlayer.cards.size(); i++){
+            System.out.println(i+"- "+currentPlayer.cards.get(i).name+" _ effect : "+currentPlayer.cards.get(i).effect);
+        }
+        System.out.println("Play card ? card's number ?");  
+        String card_play_number = scanner.nextLine();
+        Card card_play=currentPlayer.cards.get(Integer.parseInt(card_play_number));
+        //effect card
+        
+        Card counter_card = counterCardPlayers();
+        if(counter_card != null){
+            //effect counter card
+            //battle counter card with currentPlayer and currentCounterPlayer
+        }
+        
+    }
+    
+    public Player nextPlayer(){
+        for (int i = 0; i < players.size(); i++) {
+            if(players.get(i).name==currentPlayer.name){
+                if(i ==players.size()-1){
+                    return players.get(0);
+                }else{
+                    return players.get(i+1);
+                }
+            }
+        }
+        return currentPlayer;
+    }
+    
+    public Card counterCardPlayers(){
+        Card card_tmp = new Card();
+        currentCounterPlayer= nextPlayer();
+        while(!currentPlayer.name.equals(currentCounterPlayer.name)){
+            card_tmp = counterCard(currentCounterPlayer); 
+            if(card_tmp!=null){
+                return card_tmp;
+            }
+        } 
+        return null;
+    }
+    public Card counterCard(Player player){
+        Scanner scanner = new Scanner(System.in);        
+        String card_play_number="";
+        Card card_play=new Card();
+        System.out.println(currentCounterPlayer.name+" counter play ?");
+        for(int i=0; i < player.cards.size(); i++){
+            System.out.println(i+"- "+player.cards.get(i).name+" _ effect : "+player.cards.get(i).effect);
+        }
+        System.out.println("Play card ? card's number or n ?");  
+        card_play_number = scanner.nextLine();
+        if(card_play_number.equals("n")){
+            player= nextPlayer();
+            return null;
+        }else{
+            card_play= player.cards.get(Integer.parseInt(card_play_number));
+            currentCounterPlayer = player;
+            return card_play;
+        }
     }
     
 }

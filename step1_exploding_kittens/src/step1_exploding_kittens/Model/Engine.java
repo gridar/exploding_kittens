@@ -28,6 +28,14 @@ public class Engine {
         System.out.println("\nrandomDeck ?\n");
         deck.randomDeck();
         deck.print();
+        System.out.println("\nDistribute Cards ?\n");
+        deck.distributeCards(players, 5);
+        System.out.println("player 1");
+        players.get(0).printCards();
+        System.out.println("player 2");
+        players.get(1).printCards();
+        System.out.println("deck");
+        deck.print();
         
     }
     

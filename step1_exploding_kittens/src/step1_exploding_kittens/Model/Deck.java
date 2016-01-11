@@ -63,6 +63,14 @@ public class Deck {
             this.cards.add(new Card(exploding_kitten));
         }
     }
+    public void distributeCards(List<Player> players, int nb_cards){
+            for(int i = 0; i < players.size(); i++){
+                for(int j=0; j <nb_cards; j++){
+                    players.get(i).cards.add(this.cards.get(0));
+                    this.cards.remove(0);
+                }
+            }
+    }
     
     
     

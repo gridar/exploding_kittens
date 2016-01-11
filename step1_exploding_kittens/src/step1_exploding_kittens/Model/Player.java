@@ -36,6 +36,10 @@ public class Player {
         this.cards = cards;
     }
 
-    
+    public void printCards(){
+        for(Card item : cards){
+            System.out.println(item.name);
+        }
+    }
     
 }

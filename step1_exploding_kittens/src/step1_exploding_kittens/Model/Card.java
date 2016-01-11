@@ -21,7 +21,6 @@ public class Card {
         this.name = name;
     }
     
-    
     public Card(String name, String effect) {
         this.name = name;
         this.effect = effect;

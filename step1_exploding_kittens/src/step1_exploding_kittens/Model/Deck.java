@@ -19,12 +19,12 @@ public class Deck {
     public List<Card> cards;
 
 
-    public float NB_ATTACK_CARDS = 4;
-    public float NB_SKIP_CARDS = 4;
-    public float NB_FAVOR_CARDS = 4;
-    public float NB_SHUFFLE_CARDS = 4;
-    public float NB_SEE_YHE_FUTURE_CARDS = 5;
-    public float NB_KITTEN_CARDS = 20;
+    public int NB_ATTACK_CARDS = 4;
+    public int NB_SKIP_CARDS = 4;
+    public int NB_FAVOR_CARDS = 4;
+    public int NB_SHUFFLE_CARDS = 4;
+    public int NB_SEE_YHE_FUTURE_CARDS = 5;
+    public int NB_KITTEN_CARDS = 20;
     
     public Deck(int nb_players) {
         this.cards = new LinkedList();

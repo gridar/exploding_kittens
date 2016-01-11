@@ -42,4 +42,12 @@ public class Player {
         }
     }
     
+    public boolean haveSpecificCard(String name){
+        for(Card item : this.cards){
+            if(item.getName()==name){
+                return true;
+            }
+        }
+        return false;
+    }
 }

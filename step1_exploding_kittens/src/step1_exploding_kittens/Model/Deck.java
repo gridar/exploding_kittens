@@ -37,27 +37,6 @@ public class Deck {
         }
     }
     
-    public void randomDeck(){
-        
-        List<Card> clone_deck = new LinkedList<Card>();
-        List<Card> clone_deck_tmp = this.cards;
-        int size_deck = this.cards.size();
-        
-        Random randomGenerator = new Random();
-        int randomInt;
-        while(clone_deck_tmp.size()>0){
-            randomInt = randomGenerator.nextInt(clone_deck_tmp.size());
-            clone_deck.add(clone_deck_tmp.get(randomInt));
-            clone_deck_tmp.remove(randomInt);
-        }
-        if(clone_deck.size()==size_deck){
-            this.cards = clone_deck;
-            System.out.println("Good randomDeck");
-        }else{
-            System.out.println("Bad randomDeck");
-        }
-    }
-    
     private void createCards(String exploding_kitten, int nb_cards) {
         for(int i = 0; i < nb_cards; i++){
             this.cards.add(new Card(exploding_kitten));
@@ -66,6 +45,9 @@ public class Deck {
     public void distributeCards(List<Player> players, int nb_cards){
             for(int i = 0; i < players.size(); i++){
                 for(int j=0; j <nb_cards; j++){
+                    while(this.cards.get(0).name== "Exploding kitten"){
+                        Collections.shuffle(this.cards);
+                    }
                     players.get(i).cards.add(this.cards.get(0));
                     this.cards.remove(0);
                 }

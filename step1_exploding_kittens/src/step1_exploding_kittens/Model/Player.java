@@ -50,4 +50,12 @@ public class Player {
         }
         return false;
     }
+    
+    public Card playCard(int index){
+        Card card_tmp = new Card();
+        card_tmp = this.cards.get(index);
+        this.cards.remove(index);
+        
+        return card_tmp;
+    }
 }

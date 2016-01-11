@@ -6,6 +6,7 @@
 package step1_exploding_kittens.Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class Engine {
         
         deck.print();
         System.out.println("\nrandomDeck ?\n");
-        deck.randomDeck();
+        Collections.shuffle(deck.cards);
         deck.print();
         System.out.println("\nDistribute Cards ?\n");
         deck.distributeCards(players, 5);
@@ -36,6 +37,9 @@ public class Engine {
         players.get(1).printCards();
         System.out.println("deck");
         deck.print();
+        
+        
+        
         
     }
     

@@ -17,6 +17,7 @@ public class Engine {
     public List<Player> players;
     public Deck deck;
     public Discard discard;
+    public Player currentPlayer;
     
     public Engine() {
         deck = new Deck(2);
@@ -24,6 +25,7 @@ public class Engine {
         players = new ArrayList();
         players.add(new Player( "nico"));
         players.add(new Player( "juju"));
+        currentPlayer = players.get(0);
         
         deck.print();
         System.out.println("\nrandomDeck ?\n");
@@ -38,9 +40,23 @@ public class Engine {
         System.out.println("deck");
         deck.print();
         
-        
-        
-        
+        while(!endGame()){
+            
+        }
+    }
+    
+    public boolean endGame(){
+        for(Player item : players){
+            if(item.cards.size()==0){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public void playTurn(){
+        //Wait current player play a card
+            
     }
     
 }

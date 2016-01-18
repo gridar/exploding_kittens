@@ -28,6 +28,7 @@ public class Engine {
         players.add(new Player( "nico"));
         players.add(new Player( "juju"));
         currentPlayer = players.get(0);
+        discard = new Discard();
         
         deck.print();
         System.out.println("\nrandomDeck ?\n");
@@ -73,7 +74,10 @@ public class Engine {
         System.out.println(card_play.name);
         
         if(!blocked()){
+            System.out.println("Card not blocked");
             card_play.play(this);
+        }else{
+            System.out.println("Card blocked");
         }
     }
     
@@ -89,10 +93,11 @@ public class Engine {
         int nbPlayer = this.getNbPlayers();
 
         // loop on all players starting with current player
-        for(int i = index; i < index + nbPlayer ; i++) {
+        for(int i = index + 1; i < index + nbPlayer; i++) {
             tmp_index = i % nbPlayer;
             Player tmp_player = this.players.get(tmp_index);
             if(tmp_player.haveBlockCard() && tmp_player.selectBlockCard()){
+                tmp_player.playSpecificCard("Nope").play(this);
                 if(!blocked(tmp_player)){
                     blocked = true;
                     break;
@@ -100,7 +105,6 @@ public class Engine {
             }
         
         }
-        System.out.println(blocked);
         return blocked;
     }
 

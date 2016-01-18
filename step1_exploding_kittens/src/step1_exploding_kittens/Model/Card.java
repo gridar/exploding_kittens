@@ -43,8 +43,7 @@ public class Card {
     }
 
     public void play(Engine engine) {
-            System.out.println(this.name);
-//        switch (this.name) {
+        switch (this.name) {
 //            case "Exploding kitten": engine.getCurrentPlayer().kill();
 //                break;
 //            case "Attack": engine.nextPlayer(); //to change
@@ -61,13 +60,18 @@ public class Card {
 //                if (engine.getCurrentPlayer().haveSpecificPairs(this.name))
 //                    engine.getCurrentPlayer().stealCard();
 //                break;  
-//            case "Nope": throw UnimplementedCardPlayed();
-//                break;
+            case "Nope": this.goDiscard(engine);
+                break;
 //            case "Defuse": throw UnimplementedCardPlayed();
 //                break;
-//        }
+        }
 
 
+    }
+
+    private void goDiscard(Engine engine) {
+        
+        engine.discard.add(this);
     }
 
     

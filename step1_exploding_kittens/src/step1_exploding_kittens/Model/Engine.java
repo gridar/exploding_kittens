@@ -42,6 +42,9 @@ public class Engine {
         System.out.println("deck");
         deck.print();
         
+        currentPlayer = players.get(0);
+        playTurn();
+        
         while(!endGame()){
             
         }
@@ -67,25 +70,13 @@ public class Engine {
         String card_play_number = scanner.nextLine();
         Card card_play = currentPlayer.cards.get(Integer.parseInt(card_play_number));
         //effect card
-        System.println(card_play.name);
+        System.out.println(card_play.name);
         
         if(!blocked()){
-            card_play.play();
+            card_play.play(this);
         }
     }
     
-    public Player nextPlayer(){
-        for (int i = 0; i < players.size(); i++) {
-            if(players.get(i).name==currentPlayer.name){
-                if(i ==players.size()-1){
-                    return players.get(0);
-                }else{
-                    return players.get(i);
-                }
-            }
-        }
-        return currentPlayer;
-    }
 
     public boolean blocked(){
         return this.blocked(this.getCurrentPlayer());
@@ -94,12 +85,13 @@ public class Engine {
 
         boolean blocked = false;
         int index = getPlayerIndex(player);
+        int tmp_index=0;
         int nbPlayer = this.getNbPlayers();
 
         // loop on all players starting with current player
         for(int i = index; i < index + nbPlayer ; i++) {
             tmp_index = i % nbPlayer;
-            Player tmp_tmp_player = this.tmp_players.get(tmp_index);
+            Player tmp_player = this.players.get(tmp_index);
             if(tmp_player.haveBlockCard() && tmp_player.selectBlockCard()){
                 if(!blocked(tmp_player)){
                     blocked = true;
@@ -108,24 +100,22 @@ public class Engine {
             }
         
         }
+        System.out.println(blocked);
         return blocked;
     }
 
-    public boolean selectBlockCard(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Play Nope card ? y or n ?");
-        switch (scanner.nextLine()) {
-            case "y": return true;
-                break;
-            case "n": return false;
-                break;
-            default: return selectBlockCard();
-                break;
-        }
+    
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
     }
 
-    Object getCurrentPlayer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private int getPlayerIndex(Player player) {
+        return players.indexOf(player);
+    }
+
+    private int getNbPlayers() {
+        return players.size();
     }
     
 }

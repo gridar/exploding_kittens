@@ -43,32 +43,34 @@ public class Card {
     }
 
     public void play(Engine engine) {
-
-        switch (this.name) {
-            case "Exploding kitten": engine.getCurrentPlayer().kill();
-                break;
-            case "Attack": engine.nextPlayer(); //to change
-                break;
-            case "Skip": engine.nextPlayer();
-                break;
-            case "Favor": engine.getCurrentPlayer().stealCard();
-                break;
-            case "Shuffle": engine.deck.shuffle();
-                break;
-            case "See the future": engine.deck.getNextCards(3);
-                break;
-            case "Kitten": 
-                if (engine.getCurrentPlayer().haveSpecificPairs(this.name))
-                    engine.getCurrentPlayer().stealCard();
-                break;  
-            case "Nope": throw UnimplementedCardPlayed();
-                break;
-            case "Defuse": throw UnimplementedCardPlayed();
-                break;
-        }
+            System.out.println(this.name);
+//        switch (this.name) {
+//            case "Exploding kitten": engine.getCurrentPlayer().kill();
+//                break;
+//            case "Attack": engine.nextPlayer(); //to change
+//                break;
+//            case "Skip": engine.nextPlayer();
+//                break;
+//            case "Favor": engine.getCurrentPlayer().stealCard();
+//                break;
+//            case "Shuffle": engine.deck.shuffle();
+//                break;
+//            case "See the future": engine.deck.getNextCards(3);
+//                break;
+//            case "Kitten": 
+//                if (engine.getCurrentPlayer().haveSpecificPairs(this.name))
+//                    engine.getCurrentPlayer().stealCard();
+//                break;  
+//            case "Nope": throw UnimplementedCardPlayed();
+//                break;
+//            case "Defuse": throw UnimplementedCardPlayed();
+//                break;
+//        }
 
 
     }
+
+    
     
     
 }

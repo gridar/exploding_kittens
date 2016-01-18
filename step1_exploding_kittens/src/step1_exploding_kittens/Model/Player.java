@@ -8,6 +8,7 @@ package step1_exploding_kittens.Model;
 import java.util.List;
 import java.util.EmptyStackException;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 /**
  *
@@ -64,5 +65,19 @@ public class Player {
         this.cards.remove(index);
         
         return card_tmp;
+    }
+
+    boolean haveBlockCard() {
+        return haveSpecificCard("Nope");
+    }
+
+    public boolean selectBlockCard(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Play Nope card ? y or n ?");
+        switch (scanner.nextLine()) {
+            case "y": return true;
+            case "n": return false;
+            default: return selectBlockCard();
+        }
     }
 }

@@ -57,10 +57,14 @@ public class Card {
                 break;
             case "See the future": engine.deck.getNextCards(3);
                 break;
-            case "kitten": 
+            case "Kitten": 
                 if (engine.getCurrentPlayer().haveSpecificPairs(this.name))
                     engine.getCurrentPlayer().stealCard();
-                break;            
+                break;  
+            case "Nope": throw UnimplementedCardPlayed();
+                break;
+            case "Defuse": throw UnimplementedCardPlayed();
+                break;
         }
 
 

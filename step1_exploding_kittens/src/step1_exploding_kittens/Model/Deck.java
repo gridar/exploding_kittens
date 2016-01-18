@@ -38,7 +38,9 @@ public class Deck {
         this.createCards("Favor", NB_FAVOR_CARDS);
         this.createCards("Shuffle", NB_SHUFFLE_CARDS);
         this.createCards("See the future", NB_SEE_YHE_FUTURE_CARDS);
-        this.createCards("kitten", NB_KITTEN_CARDS);
+        this.createCards("Kitten", NB_KITTEN_CARDS);
+        this.createCards("Nope", NB_NOPE_CARDS);
+        this.createCards("Defuse", NB_DEFUSE_CARDS);
     }
     
     public void print() {

@@ -68,7 +68,7 @@ public class Engine {
         Card card_play=currentPlayer.cards.get(Integer.parseInt(card_play_number));
         //effect card
         
-        Card counter_card = counterCardPlayers();
+        Card counter_card = counterCardPlayers(0);
         if(counter_card != null){
             //effect counter card
             //battle counter card with currentPlayer and currentCounterPlayer
@@ -82,42 +82,70 @@ public class Engine {
                 if(i ==players.size()-1){
                     return players.get(0);
                 }else{
-                    return players.get(i+1);
+                    return players.get(i);
                 }
             }
         }
         return currentPlayer;
     }
     
-    public Card counterCardPlayers(){
+    public Card counterCardPlayers(int nCounter){
         Card card_tmp = new Card();
-        currentCounterPlayer= nextPlayer();
-        while(!currentPlayer.name.equals(currentCounterPlayer.name)){
-            card_tmp = counterCard(currentCounterPlayer); 
-            if(card_tmp!=null){
-                return card_tmp;
+        
+        do{
+            currentCounterPlayer= nextCounterPlayer();
+            if(currentCounterPlayer==null){
+                //error
+            }else{
+
             }
-        } 
+           card_tmp = counterCard(currentCounterPlayer); 
+            if(card_tmp!=null){
+                if(card_tmp.name.equals("Nope")){
+                    counterCardPlayers(nCounter++);
+                }
+            } 
+        }while(!currentPlayer.name.equals(currentCounterPlayer.name));
+        
         return null;
     }
     public Card counterCard(Player player){
         Scanner scanner = new Scanner(System.in);        
         String card_play_number="";
         Card card_play=new Card();
-        System.out.println(currentCounterPlayer.name+" counter play ?");
+        System.out.println(currentCounterPlayer.name+" counter play with a Nope card ?");
         for(int i=0; i < player.cards.size(); i++){
             System.out.println(i+"- "+player.cards.get(i).name+" _ effect : "+player.cards.get(i).effect);
         }
         System.out.println("Play card ? card's number or n ?");  
         card_play_number = scanner.nextLine();
         if(card_play_number.equals("n")){
-            player= nextPlayer();
             return null;
         }else{
             card_play= player.cards.get(Integer.parseInt(card_play_number));
-            currentCounterPlayer = player;
-            return card_play;
+            if(card_play.name.equals("Nope")){
+                return card_play;
+            }else{
+                System.out.println("Wrong card play");
+                counterCard(player);
+            }
+            
         }
+        return null;
+    }
+
+    private Player nextCounterPlayer() {
+        for (int i = 0; i < players.size(); i++) {
+            if(players.get(i).equals(currentCounterPlayer.name)){
+                if(i==players.size()-1){
+                    currentCounterPlayer= players.get(0);
+                }else{
+                     currentCounterPlayer= players.get(i+1);
+                }
+                return currentCounterPlayer;
+            }
+        }
+        return null;
     }
     
 }

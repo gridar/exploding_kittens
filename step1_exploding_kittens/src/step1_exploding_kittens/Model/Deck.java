@@ -15,7 +15,7 @@ import java.util.Random;
  * @author Nicolas
  */
 public class Deck {
-    public static int NB_CARDS_BY_PLAYER = 9;
+    public static int NB_CARDS_BY_PLAYER = 52;
     public List<Card> cards;
 
 
@@ -24,6 +24,8 @@ public class Deck {
     public int NB_FAVOR_CARDS = 4;
     public int NB_SHUFFLE_CARDS = 4;
     public int NB_SEE_YHE_FUTURE_CARDS = 5;
+    public int NB_DEFUSE_CARDS = 6;
+    public int NB_NOPE_CARDS = 5;
     public int NB_KITTEN_CARDS = 20;
     
     public Deck(int nb_players) {

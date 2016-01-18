@@ -68,10 +68,12 @@ public class Engine {
         Card card_play=currentPlayer.cards.get(Integer.parseInt(card_play_number));
         //effect card
         
-        Card counter_card = counterCardPlayers(0);
-        if(counter_card != null){
+        int counter_card = counterCardPlayers(0);
+        if(counter_card%2 == 0){
             //effect counter card
             //battle counter card with currentPlayer and currentCounterPlayer
+        }else{
+            //counter card
         }
         
     }
@@ -89,16 +91,15 @@ public class Engine {
         return currentPlayer;
     }
     
-    public Card counterCardPlayers(int nCounter){
+    public int counterCardPlayers(int nCounter){
         Card card_tmp = new Card();
         
         do{
             currentCounterPlayer= nextCounterPlayer();
             if(currentCounterPlayer==null){
                 //error
-            }else{
-
             }
+            
            card_tmp = counterCard(currentCounterPlayer); 
             if(card_tmp!=null){
                 if(card_tmp.name.equals("Nope")){
@@ -107,7 +108,7 @@ public class Engine {
             } 
         }while(!currentPlayer.name.equals(currentCounterPlayer.name));
         
-        return null;
+        return nCounter;
     }
     public Card counterCard(Player player){
         Scanner scanner = new Scanner(System.in);        
@@ -146,6 +147,10 @@ public class Engine {
             }
         }
         return null;
+    }
+
+    Object getCurrentPlayer() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

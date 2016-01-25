@@ -95,4 +95,11 @@ public class Player {
         this.cards.remove(tmp_card);
         return tmp_card;
     }
+    
+    public Card playSpecificCard(int index) {
+        Card tmp_card= this.cards.get(index);
+        this.cards.remove(tmp_card);
+        return tmp_card;
+    }
+    
 }

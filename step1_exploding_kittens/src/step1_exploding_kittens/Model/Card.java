@@ -60,8 +60,8 @@ public class Card {
 //                if (engine.getCurrentPlayer().haveSpecificPairs(this.name))
 //                    engine.getCurrentPlayer().stealCard();
 //                break;  
-            case "Nope": this.goDiscard(engine);
-                break;
+//            case "Nope": this.goDiscard(engine);
+//                break;
 //            case "Defuse": throw UnimplementedCardPlayed();
 //                break;
         }
@@ -69,8 +69,8 @@ public class Card {
 
     }
 
-    private void goDiscard(Engine engine) {
-        
+    public void goDiscard(Engine engine) {
+        //engine.currentPlayer.cards.remove(this);
         engine.discard.add(this);
     }
 

@@ -69,6 +69,10 @@ public class Deck {
                 }
             }
     }
+
+    public Card pick() {
+        return this.cards.remove(0);
+    }
     
     
     

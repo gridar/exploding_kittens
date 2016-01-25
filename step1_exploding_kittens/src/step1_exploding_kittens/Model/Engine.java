@@ -44,10 +44,10 @@ public class Engine {
         deck.print();
         
         currentPlayer = players.get(0);
-        playTurn();
         
         while(!endGame()){
-            
+            playTurn();
+            nextPlayer();            
         }
     }
     
@@ -69,16 +69,47 @@ public class Engine {
         }
         System.out.println("Play card ? card's number ?");  
         String card_play_number = scanner.nextLine();
-        Card card_play = currentPlayer.cards.get(Integer.parseInt(card_play_number));
-        //effect card
-        System.out.println(card_play.name);
+        // remove card from player hand
+        Card played_card = currentPlayer.playSpecificCard(Integer.parseInt(card_play_number));
+        System.out.println(played_card.name);
         
         if(!blocked()){
             System.out.println("Card not blocked");
-            card_play.play(this);
+            // do effect of the card
+            played_card.play(this);
+            played_card.goDiscard(this);
         }else{
+            // put card in discard
             System.out.println("Card blocked");
+            played_card.goDiscard(this);   
         }
+        
+        this.askForFinishTurn();
+    }
+    
+    public void nextPlayer(){        
+        int index = players.indexOf(currentPlayer);
+        int toto = (index+1)%getNbPlayers();
+        System.out.println(index);
+        currentPlayer = this.players.get((index+1)%getNbPlayers());    
+        System.out.println("index finis : " + toto);
+    }
+    
+    public void askForFinishTurn() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Finish turn ? y / n");        
+        switch (scanner.nextLine()) {
+            case "n": 
+                playTurn();
+                break;
+            case "y": 
+                currentPlayer.cards.add(deck.pick());
+                break;
+            default: 
+                askForFinishTurn();
+                break;
+        }
+        
     }
     
 
@@ -98,6 +129,8 @@ public class Engine {
             Player tmp_player = this.players.get(tmp_index);
             if(tmp_player.haveBlockCard() && tmp_player.selectBlockCard()){
                 tmp_player.playSpecificCard("Nope").play(this);
+                
+                
                 if(!blocked(tmp_player)){
                     blocked = true;
                     break;
@@ -108,7 +141,9 @@ public class Engine {
         return blocked;
     }
 
-    
+    public void goDiscard(Card card){
+        
+    }
 
     public Player getCurrentPlayer() {
         return currentPlayer;

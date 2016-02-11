@@ -13,15 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.mycompany.exploding_kittens_core.Model.*;
+//import com.mycompany.exploding_kittens_core.Model.*;
 /**
  *
  * @author Nicolas
  */
-@WebServlet(name = "KittensServlet", urlPatterns = {"/KittensServlet"})
+//@WebServlet(name = "KittensServlet", urlPatterns = {"/KittensServlet"})
 public class KittensServlet extends HttpServlet {
     
-    public Engine game;
+    //public Engine game;
     
     
     /**

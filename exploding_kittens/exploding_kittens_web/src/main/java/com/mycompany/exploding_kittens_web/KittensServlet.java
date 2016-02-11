@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import com.mycompany.exploding_kittens_core.Model.*;
+import com.mycompany.exploding_kittens_core.Model.Engine;
 /**
  *
  * @author Nicolas
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 //@WebServlet(name = "KittensServlet", urlPatterns = {"/KittensServlet"})
 public class KittensServlet extends HttpServlet {
     
-    //public Engine game;
+    protected Engine game;
     
     
     /**
@@ -61,8 +61,10 @@ public class KittensServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        processRequest(request, response);
-        
+        //processRequest(request, response);
+        game = new Engine();
+        request.getSession().setAttribute("player", game.getCurrentPlayer());
+        response.sendRedirect(request.getContextPath() + "/game.jsp" );
     }
 
     /**

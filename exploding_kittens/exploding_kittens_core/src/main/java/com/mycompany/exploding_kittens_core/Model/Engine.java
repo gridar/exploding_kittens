@@ -45,11 +45,12 @@ public class Engine {
         deck.print();
         
         currentPlayer = players.get(0);
-        
+        /*
         while(!endGame()){
             playTurn();
             nextPlayer();            
         }
+        */
     }
     
     public boolean endGame(){

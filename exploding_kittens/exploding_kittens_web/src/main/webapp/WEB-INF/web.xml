@@ -16,6 +16,6 @@
   
     <servlet-mapping>
         <servlet-name>KittensServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/game/new</url-pattern>
     </servlet-mapping>
 </web-app>

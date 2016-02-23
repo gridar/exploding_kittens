@@ -33,12 +33,12 @@ public class Deck {
         this.cards = new LinkedList();
         int nb_exploding_kitten_cards = nb_players - 1;
         
-        this.createCards("Exploding kitten", nb_exploding_kitten_cards);
+        this.createCards("Exploding_kitten", nb_exploding_kitten_cards);
         this.createCards("Attack", NB_ATTACK_CARDS);
         this.createCards("Skip", NB_SKIP_CARDS);
         this.createCards("Favor", NB_FAVOR_CARDS);
         this.createCards("Shuffle", NB_SHUFFLE_CARDS);
-        this.createCards("See the future", NB_SEE_YHE_FUTURE_CARDS);
+        this.createCards("See_the_future", NB_SEE_YHE_FUTURE_CARDS);
         this.createCards("Kitten", NB_KITTEN_CARDS);
         this.createCards("Nope", NB_NOPE_CARDS);
         this.createCards("Defuse", NB_DEFUSE_CARDS);

@@ -64,6 +64,7 @@ public class KittensServlet extends HttpServlet {
         //processRequest(request, response);
         game = new Engine();
         request.getSession().setAttribute("player", game.getCurrentPlayer());
+        request.getSession().setAttribute("gameEngine", game);
         response.sendRedirect(request.getContextPath() + "/game.jsp" );
     }
 

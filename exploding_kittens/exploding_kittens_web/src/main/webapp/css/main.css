@@ -1,0 +1,93 @@
+.Nope, .Shuffle, .Favor, .Skip, .Kitten, .Attack, .See_the_future,.Exploding_kitten ,.Defuse {
+  width: 63px;
+  height: 83px;
+  float: left;
+  border: 1px solid white;
+  -moz-border-radius: 4px / 4px;
+  -webkit-border-radius: 4px 4px;
+  border-radius: 4px / 4px;
+}
+
+.Nope {
+  background: #4869bb;
+  border-color: #385498;
+}
+
+.Shuffle {
+  background: #f7ab0d;
+  border-color: #ca8b07;
+}
+
+.Favor {
+  background: #782d98;
+  border-color: #592171;
+}
+
+.Skip {
+  background: #895a1c;
+  border-color: #5f3e13;
+}
+
+.Kitten {
+  background: #db1f26;
+  border-color: #ae191e;
+}
+.Attack {
+  background: #db1f26;
+  border-color: #ae191e;
+}
+.See_the_future {
+  background: #db1f26;
+  border-color: #ae191e;
+}
+.Exploding_kitten {
+  background: #db1f26;
+  border-color: #ae191e;
+}
+.Defuse {
+  background: #db1f26;
+  border-color: #ae191e;
+}
+
+
+.pileContainer {
+  overflow: hidden;
+}
+
+.NopePile,
+.ShufflePile,
+.FavorPile,
+.SkipPile,
+.KittenPile,
+.AttackPile,
+.See_the_futurePile,
+.Exploding_kittenPile,
+.DefusePile {
+  padding: 10px 10px 10px 73px;
+  position: relative;
+  float: left;
+}
+.NopePile .card,
+.ShufflePile .card,
+.FavorPile .card,
+.SkipPile .card,
+.KittenPile .card,
+.AttackPile .card,
+.See_the_futurePile .card,
+.Exploding_kittenPile .card,
+.DefusePile .card {
+  position: relative;
+  margin: 0 0 0 -63px;
+}
+
+.playarea {
+  clear: left;
+  border: 5px dashed #ccc;
+  min-height: 85px;
+  margin: 10px;
+  padding: 20px 20px 20px 63px;
+}
+.playarea .card {
+  position: relative;
+  margin: 0 0 0 -43px;
+}

@@ -16,6 +16,7 @@
         <link rel="stylesheet prefetch" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+        
         <title>JSP Page</title>
     </head>
     <body>
@@ -28,7 +29,7 @@
             %>
             
             
-            <div class="pileContainer">
+            <div class="pileContainer" id='pileContainer'>
             <%= currentP.name %>
             <br/>
             <% for(int i = 0; i < p.cards.size(); i++){%>
@@ -58,7 +59,7 @@
     <script>
         
 (function () {
-
+  
   var RT = {
     
     CardManager: {
@@ -112,7 +113,7 @@
         $('.Exploding_kittenPile'+player).append(Exploding_kittenCards);
         $('.DefusePile .'+player).append(DefuseCards);
 
-        $('.card').draggable();
+        $('.card').draggable({ containment: "#pileContainer" , scroll: false });
         $('.playarea .card').draggable('destroy');
         
       }

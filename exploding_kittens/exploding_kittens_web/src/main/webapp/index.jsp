@@ -14,6 +14,6 @@
     </head>
     <body>
         
-        <h1>Hello World toto!</h1>
+        <h1>LoadGame</h1>
     </body>
 </html>

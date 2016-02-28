@@ -55,7 +55,7 @@ public class Player {
     
     public Card getSpecificCard(String name){
         for(Card item : this.cards){
-            if(item.getName()==name){
+            if(item.getName().equals(name)){
                 return item;
             }
         }

@@ -25,10 +25,11 @@
         
             <% Player p = (Player)request.getSession().getAttribute("player");
                Engine game = (Engine)request.getSession().getAttribute("gameEngine");
+               String error = (String)request.getSession().getAttribute("error");
                Player currentP = game.currentPlayer;
             %>
             
-            
+            <h1><%=error%></h1>
             <div class="pileContainer" id='pileContainer'>
                 <h3><%= currentP.name %></h3>
             <br/>

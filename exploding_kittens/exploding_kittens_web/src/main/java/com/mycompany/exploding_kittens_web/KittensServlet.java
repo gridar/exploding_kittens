@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mycompany.exploding_kittens_core.Model.Engine;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 /**
  *
@@ -74,7 +76,7 @@ public class KittensServlet extends HttpServlet {
         if(request.getParameter("SizeCards")!=null){
             System.out.println(request.getParameter("SizeCards"));
         }
-        
+        request.getSession().setAttribute("error", "");
         response.sendRedirect(request.getContextPath() + "/game.jsp" );
     }
 
@@ -89,13 +91,25 @@ public class KittensServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        List<String> result=new ArrayList();
+        int sizeCardsPlay=0;
         if(request.getParameter("SizeCards")!=null){
-            System.out.println(request.getParameter("SizeCards"));
-            System.out.println(request.getParameter("c0"));
-            System.out.println(request.getParameter("c1"));
+            sizeCardsPlay=Integer.parseInt(request.getParameter("SizeCards"));
+            for(int i =0; i < sizeCardsPlay;i++){
+                result.add(request.getParameter("c"+i));
+            }
+            
+            if(request.getSession().getAttribute("gameEngine")!=null){
+                game = (Engine) request.getSession().getAttribute("gameEngine");
+                game = game.EngineServlet(result,game);
+                request.getSession().setAttribute("gameEngine", game);
+                request.getSession().setAttribute("player", game.getCurrentPlayer());
+                
+            }else{
+                request.getSession().setAttribute("error", "game not define");
+            }
         }
-        processRequest(request, response);
+        response.sendRedirect(request.getContextPath() + "/game.jsp" );
     }
 
     /**

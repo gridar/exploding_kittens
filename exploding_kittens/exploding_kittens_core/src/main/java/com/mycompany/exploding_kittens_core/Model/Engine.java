@@ -94,10 +94,7 @@ public class Engine {
     
     public void nextPlayer(){        
         int index = players.indexOf(currentPlayer);
-        int toto = (index+1)%getNbPlayers();
-        System.out.println(index);
         currentPlayer = this.players.get((index+1)%getNbPlayers());    
-        System.out.println("index finis : " + toto);
     }
     
     public void askForFinishTurn() {
@@ -157,9 +154,75 @@ public class Engine {
     private int getPlayerIndex(Player player) {
         return players.indexOf(player);
     }
+    private int getPlayerIndexWithName(String playerName) {
+        for(int i =0; i< this.players.size();i++){
+            if(this.players.get(i).name.equals(playerName)){
+                return i;
+            }
+        }
+        return -1;
+    }
 
     private int getNbPlayers() {
         return players.size();
+    }
+    
+    public Engine EngineServlet(List<String> cardsPlay, Engine g){
+        int index = 0;
+        String player=null;
+        String playerC=null;              
+        String cardPlayed=null;
+        String cardPlayedC=null;
+        String[] tmp=new String[2];
+        String[] tmpC=new String[2];
+        int counterNope=0;
+        boolean isCounter=false;
+        int nope=0;
+        int indexPlayer;
+        
+        
+        for(int i=0; i< cardsPlay.size(); i++){
+            tmp= cardsPlay.get(i).split("-");
+            cardPlayed = tmp[0];
+            player=tmp[1];
+            
+            index = i+1;
+            while(index<cardsPlay.size()&& !isCounter ){
+                tmpC= cardsPlay.get(index).split("-");
+                cardPlayedC = tmpC[0];
+                playerC=tmpC[1];
+                
+                if(!cardPlayedC.equals("Nope")){
+                    if(counterNope==0){
+                        isCounter = true;
+                    }else{
+                        i=index-1;
+                        nope = counterNope%2;
+                        isCounter = true;
+                    }
+                }else{
+                    counterNope++;
+                }
+                
+                index++;
+            }
+            
+            
+            if(nope==0){
+                indexPlayer= g.getPlayerIndexWithName(player) ;
+                if(indexPlayer!=-1){
+                    Card tmpCard = g.players.get(indexPlayer).playSpecificCard(cardPlayed);
+                    //tmpCard.play(g);
+                    tmpCard.goDiscard(g);
+                }
+                
+            }
+        }
+        g.currentPlayer.cards.add(g.deck.pick());
+        g.nextPlayer(); 
+        
+        return g;
+             
     }
     
 }

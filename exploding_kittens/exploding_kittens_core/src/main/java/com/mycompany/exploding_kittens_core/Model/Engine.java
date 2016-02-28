@@ -30,7 +30,9 @@ public class Engine {
         players.add(new Player( "juju"));
         currentPlayer = players.get(0);
         discard = new Discard();
-        
+        Collections.shuffle(deck.cards);
+        deck.distributeCards(players, 5);
+        /*
         deck.print();
         System.out.println("\nrandomDeck ?\n");
         Collections.shuffle(deck.cards);
@@ -43,6 +45,7 @@ public class Engine {
         players.get(1).printCards();
         System.out.println("deck");
         deck.print();
+        */
         
         currentPlayer = players.get(0);
         /*

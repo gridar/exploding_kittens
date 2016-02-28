@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mycompany.exploding_kittens_core.Model.Engine;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Nicolas
@@ -62,9 +63,18 @@ public class KittensServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //processRequest(request, response);
-        game = new Engine();
-        request.getSession().setAttribute("player", game.getCurrentPlayer());
-        request.getSession().setAttribute("gameEngine", game);
+        //System.console().printf("doGet");
+        if(request.getSession().getAttribute("gameEngine")==null){
+            game = new Engine();
+            request.getSession().setAttribute("player", game.getCurrentPlayer());
+            request.getSession().setAttribute("gameEngine", game);
+        }else{
+            game = (Engine) request.getSession().getAttribute("gameEngine");
+        }
+        if(request.getParameter("SizeCards")!=null){
+            System.out.println(request.getParameter("SizeCards"));
+        }
+        
         response.sendRedirect(request.getContextPath() + "/game.jsp" );
     }
 
@@ -79,6 +89,12 @@ public class KittensServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //System.console().printf("doPost");
+        System.out.println("----------------------------------------------------------------------------------------------doPost");
+        
+        if(request.getParameter("SizeCards")!=null){
+            System.out.println(request.getParameter("SizeCards"));
+        }
         processRequest(request, response);
     }
 

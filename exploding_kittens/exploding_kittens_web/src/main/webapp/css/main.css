@@ -1,4 +1,4 @@
-.Nope, .Shuffle, .Favor, .Skip, .Kitten, .Attack, .See_the_future,.Exploding_kitten ,.Defuse {
+.Nope, .Shuffle, .bug, .Favor, .Skip, .Kitten, .Attack, .See_the_future,.Exploding_kitten ,.Defuse {
   width: 63px;
   height: 83px;
   float: left;
@@ -11,6 +11,11 @@
 .Nope {
   background: #4869bb;
   border-color: #385498;
+}
+
+.bug {
+  background: #505050;
+  border-color: #070401;
 }
 
 .Shuffle {
@@ -58,6 +63,7 @@
 .ShufflePile,
 .FavorPile,
 .SkipPile,
+.bugPile,
 .KittenPile,
 .AttackPile,
 .See_the_futurePile,
@@ -72,6 +78,7 @@
 .FavorPile .card,
 .SkipPile .card,
 .KittenPile .card,
+.bugPile .card,
 .AttackPile .card,
 .See_the_futurePile .card,
 .Exploding_kittenPile .card,

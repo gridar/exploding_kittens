@@ -37,11 +37,19 @@ public class ServletJUnitTest extends JettyHarness {
     }
 
     @Test
-    public void une_partie_doit_etre_intialisee() throws Exception {
-        assertEquals("Partie non initialisee", get(getServletUri()));
+    public void displayHandelingPage() throws Exception {
+        String resp = get(getBaseUri());
+        assertEquals(resp.contains("LoadGame"), true);
+    }
+    
+    @Test
+    public void twoPlayerExsits() throws Exception {
+        String resp = get(getBaseUri());
+        resp = get(getNewGameUri());
+        assertEquals(resp.contains("nico"), true);
     }
 
-    private String getServletUri() {
-        return getBaseUri();
+    private String getNewGameUri() {
+        return getBaseUri() + "game/new";
     }
 }

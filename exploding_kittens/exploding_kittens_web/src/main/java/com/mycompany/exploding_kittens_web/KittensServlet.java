@@ -89,11 +89,11 @@ public class KittensServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //System.console().printf("doPost");
-        System.out.println("----------------------------------------------------------------------------------------------doPost");
         
         if(request.getParameter("SizeCards")!=null){
             System.out.println(request.getParameter("SizeCards"));
+            System.out.println(request.getParameter("c0"));
+            System.out.println(request.getParameter("c1"));
         }
         processRequest(request, response);
     }

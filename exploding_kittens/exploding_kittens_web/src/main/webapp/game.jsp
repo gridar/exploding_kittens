@@ -61,10 +61,10 @@
         
         </div> 
         <div>
-            <form id="goServlet" name="goServlet"  method="post" action="KittensServlet"   >
-                <input type="button" id="takecards" value="End the turn">
-                <input type="button" id="resetcards" value="reset cards">
+            <form id="goServlet" name="goServlet"  method="post"  action="" >
+                <input type="button" id="takecards" value="End the turn">                
             </form>
+            <input type="button" id="resetcards" value="reset cards">
         </div>    
         
             
@@ -173,15 +173,18 @@
        var Playarea = document.getElementById("playarea" ).childNodes;
        var i;
        var result = [];
+       var resultArgs = [];
+       var tmp;
        var size=  Playarea.length;
        var args = "?SizeCards="+size;
        for(i =0; i <size;i++){
            result.push(Playarea[i].className);
+           tmp = Playarea[i].className.toString().split(" ");
+           args+="&c"+i.toString()+"="+tmp[0]+"-"+tmp[2];
        }
-       var x = window.location.href;
-       //args += "&cards="+result
        
-       window.location.href=x+ args;
+       var element = document.getElementById("goServlet");
+       element.setAttribute("action", "test"+args);
        $('#goServlet').submit();
   });
    $('#resetcards').on('click', function () {

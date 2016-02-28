@@ -18,4 +18,8 @@
         <servlet-name>KittensServlet</servlet-name>
         <url-pattern>/game/new</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KittensServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
 </web-app>

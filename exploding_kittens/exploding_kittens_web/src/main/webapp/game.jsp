@@ -101,7 +101,7 @@
                 var element = document.getElementById("CardsOfSeeTheFuture");
                 var para = document.createElement("h2");
                 var node = document.createTextNode("See the future");
-                para.appendChild(node)
+                para.appendChild(node);
                 element.appendChild(para);
                 
                 var para0 = document.createElement("div");
@@ -161,7 +161,7 @@
 
         $('.card').draggable({ containment: "#pileContainer" , scroll: false });
         $('.playarea .card').draggable('destroy');
-        $('.bug').draggable('destroy')
+        $('.bug').draggable('destroy');
         
       }
     }

@@ -208,14 +208,15 @@ public class Engine {
             }
             
             
-            if(nope==0){
-                indexPlayer= g.getPlayerIndexWithName(player) ;
-                if(indexPlayer!=-1){
-                    Card tmpCard = g.players.get(indexPlayer).playSpecificCard(cardPlayed);
-                    //tmpCard.play(g);
-                    tmpCard.goDiscard(g);
-                }
+            
+            indexPlayer= g.getPlayerIndexWithName(player) ;
+            if(indexPlayer!=-1){
+                Card tmpCard = g.players.get(indexPlayer).playSpecificCard(cardPlayed);
                 
+                tmpCard.goDiscard(g);
+            }
+            if(nope==0){ 
+                //tmpCard.play(g);
             }
         }
         g.currentPlayer.cards.add(g.deck.pick());
